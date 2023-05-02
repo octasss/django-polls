@@ -74,12 +74,12 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'deafault':{
+    'default':{
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pollsdb',
-        'USER': 'root'
+        'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
