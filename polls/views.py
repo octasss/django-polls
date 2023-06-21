@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-def index(request):
-    return HttpResponse("Olá Mundo! Esta é a página inicial do aplicativo.")
+from .models import Question
 
 def detail(request, question_id):
     return HttpResponse(f"Essa é a pergunta número {question_id}.")
