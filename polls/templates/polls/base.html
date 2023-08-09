@@ -9,11 +9,13 @@
     <title>{% block title %}App de Enquetes{% endblock %}</title>
 </head>
 <body>
-    <header>Cabeçalho</header>
-    <img src="{% static 'polls/img/navio.jpg' %}">
+    <header><h2>Cabeçalho</h2></header>
+    <br>
+    <img src="{% static 'polls/img/navio.jpg' %}" width="300">
     <main>
         {% block content %}{% endblock content %}
     </main>
-    <footer>Rodapé</footer>
+    <br>
+    <footer><h2>Rodapé</h2></footer>
 </body>
 </html>
