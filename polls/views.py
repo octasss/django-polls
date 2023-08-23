@@ -16,3 +16,11 @@ def index(request):
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
     context = {"latest_question_list": latest_question_list}
     return render(request, "polls/index.html", context)
+
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
+
+class QuestionCreateView(CreateView):
+    model = Question
+    fields = ('question_text', 'pub_date')
+    success_url = reverse_lazy('index')
