@@ -17,7 +17,7 @@ def index(request):
     context = {"latest_question_list": latest_question_list}
     return render(request, "polls/index.html", context)
 
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, DeleteView
 from django.urls import reverse_lazy
 
 class QuestionCreateView(CreateView):
@@ -29,8 +29,13 @@ class QuestionCreateView(CreateView):
 class QuestionListView(ListView):
     model = Question
     context_object_name = 'questions'
-
+    ordering = ['-pub_date']
+    paginate_by = 5
 
 class QuestionDetailView(DetailView):
     model = Question
     context_object_name = 'question'
+
+class QuestionDeleteView(DeleteView):
+    model = Question
+    success_url = reverse_lazy("question-list")
