@@ -17,8 +17,9 @@ def index(request):
     context = {"latest_question_list": latest_question_list}
     return render(request, "polls/index.html", context)
 
-from django.views.generic import CreateView, ListView, DetailView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 class QuestionCreateView(CreateView):
     model = Question
@@ -38,4 +39,14 @@ class QuestionDetailView(DetailView):
 
 class QuestionDeleteView(DeleteView):
     model = Question
-    success_url = reverse_lazy("question-list")
+    success_url = reverse_lazy('question-list')
+    success_message = "Enquete excluída com sucesso."
+
+    def form_valid(self, form):
+        messages.success(self.request, self.success_message)
+        return super().form_valid(form)
+
+class QuestionUpdateView(UpdateView):
+    model = Question
+    success_url = reverse_lazy('question-list')
+    fields = ('question_text',)
