@@ -18,6 +18,14 @@
         <div class="row">
             <div class="col">
                 <h2>Cabeçalho</h2>
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li>{{user.username}} | <a href="{% url 'signup' %}">Cadastrar</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">Acessar</a></li>
+                        <li><a href="{% url 'logout' %}">Sair</a></li>
+                    {% endif %}
+                </ul>
             </div>
         </div> 
 
