@@ -19,11 +19,11 @@
             <div class="col">
                 <h2>Cabeçalho</h2>
                 <ul>
-                    {% if user.is_authenticated %}
-                        <li>{{user.username}} | <a href="{% url 'signup' %}">Cadastrar</a></li>
+                    {% if not user.is_authenticated %}
+                    <a class="p-2" href="{% url 'signup' %}">Cadastrar</a>
+                    <a class="p-2" href="{% url 'login' %}">Acessar</a>
                     {% else %}
-                        <li><a href="{% url 'login' %}">Acessar</a></li>
-                        <li><a href="{% url 'logout' %}">Sair</a></li>
+                    <a class="p-2 text-dark" href="{% url 'logout' %}">Sair</a>
                     {% endif %}
                 </ul>
             </div>

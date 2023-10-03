@@ -127,5 +127,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = "/enquetes/listar"
-LOGOUT_REDIRECT_URL = "/enquetes/listar"
+LOGIN_REDIRECT_URL = "/enquetes"
+LOGOUT_REDIRECT_URL = "/enquetes"
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
