@@ -5,9 +5,11 @@ body{
 }
 
 a{
-    color:rgb(176, 217, 255)
+    color:rgb(184, 220, 253);
+    text-decoration: none;
 }
 
 a:hover{
-    color: rgb(93, 117, 226);
+    color: rgb(117, 139, 235);
+    text-decoration: underline;
 }
