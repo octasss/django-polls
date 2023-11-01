@@ -24,11 +24,19 @@ from django.views.generic import CreateView, ListView, DetailView, DeleteView, U
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-class QuestionCreateView(CreateView):
+class QuestionCreateView(LoginRequiredMixin, CreateView):
     model = Question
     fields = ('question_text',)
     success_url = reverse_lazy('question-list')
     template_name = 'polls/question_form.html'
+
+    # def get_context_data(self, **kwargs):
+    #     context
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        # messages.success(self.request, self.success.message)
+        return super(QuestionCreateView, self).form_valid(form)
 
 class QuestionListView(ListView):
     model = Question
